@@ -1,0 +1,59 @@
+
+@media (max-width: 767px) { /* Estilos aplicados apenas em telas menores que 768px (mobile) */
+    .tm-header-gallery {
+        display: flex;
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+        justify-content: center; /* Centraliza os itens na linha */
+        align-items: center; /* Centraliza verticalmente os itens */
+        padding: 10px 0; /* Espaçamento para o cabeçalho */
+    }
+
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0 {
+        width: 33.33%; /* 3 imagens por linha */
+        max-width: 33.33%;
+        padding: 2px; /* Espaçamento menor entre as imagens */
+        box-sizing: border-box;
+        order: 1; /* Por padrão, todas as imagens vêm primeiro */
+    }
+
+    /* Ajuste para a logo e slogan */
+    .tm-site-name {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+        order: 2; /* Coloca a logo no meio, entre as imagens */
+        height: auto;
+        display: block;
+    }
+
+    .tm-site-name .tm-logo-img {
+        max-width: 150px; /* Tamanho máximo para a logo em mobile */
+        height: auto;
+        display: block;
+        margin: 0 auto; /* Centraliza a imagem */
+    }
+
+    .tm-site-name .tm-site-name-h2 {
+        font-size: 1rem; /* Tamanho menor para o slogan */
+        margin-top: 5px;
+    }
+
+    /* Exemplo de como ordenar as imagens ao redor da logo (ajuste conforme a quantidade de imagens) */
+    /* Se você tem 12 imagens, e quer 3 acima, logo, 3 abaixo, logo, 3 abaixo, etc. */
+    /* Isso é um exemplo, a ordem exata dependerá de quantas imagens você quer em cada "linha" */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(1) { order: 1; } /* Imagem 1 */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(2) { order: 1; } /* Imagem 2 */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(3) { order: 1; } /* Imagem 3 */
+    /* Logo (order: 2) */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(4) { order: 3; } /* Imagem 4 */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(5) { order: 3; } /* Imagem 5 */
+    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(6) { order: 3; } /* Imagem 6 */
+    /* ... e assim por diante para as outras imagens, ajustando o 'order' */
+
+    /* Opcional: Se você quiser 2 imagens por linha em mobile, mude para: */
+    /* .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0 {
+        width: 50%;
+        max-width: 50%;
+    } */
+}
