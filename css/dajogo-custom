@@ -1,59 +1,116 @@
-
-@media (max-width: 767px) { /* Estilos aplicados apenas em telas menores que 768px (mobile) */
+@media (max-width: 767px) {
     .tm-header-gallery {
         display: flex;
         flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
         justify-content: center; /* Centraliza os itens na linha */
         align-items: center; /* Centraliza verticalmente os itens */
-        padding: 10px 0; /* Espaçamento para o cabeçalho */
+        padding: 5px 0; /* Espaçamento reduzido para o cabeçalho */
+        height: auto; /* Garante que a altura se ajuste ao conteúdo */
+        overflow: hidden; /* Esconde qualquer conteúdo que transborde */
     }
 
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0 {
-        width: 33.33%; /* 3 imagens por linha */
-        max-width: 33.33%;
-        padding: 2px; /* Espaçamento menor entre as imagens */
+    /* Estilo para cada "bloco" de imagem (coluna) */
+    /* Cada bloco ocupará 1/3 da largura, criando 3 colunas */
+    .tm-header-gallery > div[class*="col-"] {
+        width: calc(100% / 3); /* 3 blocos por linha */
+        max-width: calc(100% / 3);
+        padding: 2px; /* Espaçamento entre os blocos */
         box-sizing: border-box;
-        order: 1; /* Por padrão, todas as imagens vêm primeiro */
+        flex-shrink: 1; /* Permite que o item encolha se necessário */
+        display: flex; /* Transforma o contêiner do bloco em flex para centralizar a imagem/conteúdo dentro dele */
+        justify-content: center;
+        align-items: center;
+        overflow: hidden; /* Garante que nada transborde dentro do bloco */
+        min-height: 75px; /* Altura mínima para os blocos, ajustável conforme suas imagens 1:1 */
+    }
+
+    /* Estilo para as imagens dentro dos blocos */
+    .tm-header-gallery img {
+        max-width: 100%; /* Garante que a imagem não exceda a largura do seu contêiner */
+        height: 100%;    /* Força a imagem a preencher a altura do seu contêiner */
+        display: block;  /* Remove espaços extras abaixo da imagem */
+        object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer, cortando se necessário */
+        width: 100%; /* Força a imagem a ocupar 100% da largura do seu contêiner */
     }
 
     /* Ajuste para a logo e slogan */
+    /* Este bloco ocupará o espaço de 2 "blocos" de imagem, centralizado na segunda linha */
     .tm-site-name {
         position: relative;
-        width: 100%;
+        width: calc(100% / 3 * 2); /* Ocupa o espaço de 2 "blocos" de imagem */
+        max-width: calc(100% / 3 * 2);
         text-align: center;
-        margin: 10px 0;
-        order: 2; /* Coloca a logo no meio, entre as imagens */
+        margin: 0; /* Remove margens externas */
         height: auto;
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5px; /* Espaçamento interno */
+        box-sizing: border-box;
+        min-height: 75px; /* Altura mínima para o bloco da logo */
     }
 
     .tm-site-name .tm-logo-img {
-        max-width: 150px; /* Tamanho máximo para a logo em mobile */
+        max-width: 100%; /* Garante que a logo se ajuste ao seu contêiner */
         height: auto;
         display: block;
-        margin: 0 auto; /* Centraliza a imagem */
+        margin: 0 auto; /* Centraliza a imagem da logo */
     }
 
     .tm-site-name .tm-site-name-h2 {
-        font-size: 1rem; /* Tamanho menor para o slogan */
+        font-size: 0.8rem; /* Tamanho menor para o slogan */
         margin-top: 5px;
+        color: #fff; /* Exemplo: cor do texto para visibilidade */
+        line-height: 1.2;
     }
 
-    /* Exemplo de como ordenar as imagens ao redor da logo (ajuste conforme a quantidade de imagens) */
-    /* Se você tem 12 imagens, e quer 3 acima, logo, 3 abaixo, logo, 3 abaixo, etc. */
-    /* Isso é um exemplo, a ordem exata dependerá de quantas imagens você quer em cada "linha" */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(1) { order: 1; } /* Imagem 1 */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(2) { order: 1; } /* Imagem 2 */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(3) { order: 1; } /* Imagem 3 */
-    /* Logo (order: 2) */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(4) { order: 3; } /* Imagem 4 */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(5) { order: 3; } /* Imagem 5 */
-    .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0:nth-child(6) { order: 3; } /* Imagem 6 */
-    /* ... e assim por diante para as outras imagens, ajustando o 'order' */
+    /* Ordem dos elementos para criar as "linhas" e posicionar a logo */
+    /* Assumindo a estrutura HTML do index.html que te passei */
+    /* As 3 primeiras imagens (blocos 1, 2, 3) */
+    .tm-header-gallery > div:nth-child(1) { order: 1; } /* Imagem 1 (img-21-01) */
+    .tm-header-gallery > div:nth-child(2) { order: 2; } /* Imagens 2 e 3 (img-11-03, img-11-04) */
+    .tm-header-gallery > div:nth-child(3) { order: 3; } /* Imagem 4 (img-21-04) */
 
-    /* Opcional: Se você quiser 2 imagens por linha em mobile, mude para: */
-    /* .tm-header-gallery .col-xs-12.col-sm-12.col-md-4.tm-pad-0 {
-        width: 50%;
-        max-width: 50%;
-    } */
+    /* O bloco da logo (que é o 5º div no HTML, mas o 4º item visualmente) */
+    .tm-header-gallery > div.tm-site-name { order: 4; } /* Logo e Slogan */
+
+    /* As 2 últimas imagens (blocos 5 e 6) */
+    .tm-header-gallery > div:nth-child(4) { order: 5; } /* Imagens 5 e 6 (img-11-05, img-11-02) */
+    .tm-header-gallery > div:nth-child(6) { order: 6; } /* Imagem 7 (logo-bg.jpg) - se ainda existir e for visível */
+    /* Ajuste os nth-child e order conforme a ordem exata dos seus divs no HTML */
+    /* No HTML que te passei, a ordem é: 1, (2,3), 4, (5,6), LOGO, 7. */
+    /* Então, a ordem correta para os 6 blocos de imagem e a logo seria: */
+    /* .tm-header-gallery > div:nth-child(1) { order: 1; } */
+    /* .tm-header-gallery > div:nth-child(2) { order: 2; } */
+    /* .tm-header-gallery > div:nth-child(3) { order: 3; } */
+    /* .tm-header-gallery > div:nth-child(5) { order: 5; } */ /* Este é o div com as imagens 5 e 6 */
+    /* .tm-header-gallery > div:nth-child(6) { order: 6; } */ /* Este é o div com a logo-bg.jpg */
+    /* .tm-header-gallery > div.tm-site-name { order: 4; } */ /* Este é o div da logo principal */
+
+    /* Reajustando a ordem com base no HTML fornecido anteriormente: */
+    /* Divs no HTML:
+        1: img-21-01
+        2: img-11-03, img-11-04
+        3: img-21-04
+        4: img-11-05, img-11-02
+        5: tm-site-name (logo principal)
+        6: logo-bg.jpg
+    */
+    /* Queremos: 3 imagens na primeira linha, logo (2 blocos) + 1 imagem na segunda linha, 2 imagens na terceira linha */
+    .tm-header-gallery > div:nth-child(1) { order: 1; } /* Imagem 1 (img-21-01) */
+    .tm-header-gallery > div:nth-child(2) { order: 2; } /* Imagens 2 e 3 (img-11-03, img-11-04) */
+    .tm-header-gallery > div:nth-child(3) { order: 3; } /* Imagem 4 (img-21-04) */
+
+    .tm-header-gallery > div.tm-site-name { order: 4; } /* Logo principal (ocupa 2/3 da largura) */
+    .tm-header-gallery > div:nth-child(4) { order: 5; } /* Imagens 5 e 6 (img-11-05, img-11-02) */
+    .tm-header-gallery > div:nth-child(6) { order: 6; } /* Imagem 7 (logo-bg.jpg) */
+
+    /* Se você quiser que a logo-bg.jpg seja escondida em mobile, adicione: */
+    .tm-header-gallery > div:nth-child(6) {
+        display: none; /* Esconde a imagem de fundo da logo em mobile */
+    }
+    /* E ajuste a ordem dos outros elementos para preencher o espaço */
+    /* Por exemplo, se você esconder a logo-bg.jpg, o div:nth-child(4) pode ter order: 5 */
+    /* E o tm-site-name pode ter order: 4 e width: 100% para centralizar sozinho */
 }
