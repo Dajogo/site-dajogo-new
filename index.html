@@ -45,25 +45,23 @@ http://site.dajogo.app
                         </div>                
 
                         <!-- Imagens 3 e 4 -->
-                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 tm-pad-0">
-                            <div class= "row no-gutters tm-pad-0">
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <a href="img/img-11-03.jpg">
-                                        <picture>
-                                            <source media="(max-width: 767px)" srcset="img/img-11-03-mobile.jpg">
-                                            <img src="img/img-11-03.jpg" alt="Image" class="img-fluid tm-header-img" loading="lazy">    
-                                        </picture>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                    <a href="img/img-11-04.jpg">
-                                        <picture>
-                                            <source media="(max-width: 767px)" srcset="img/img-11-04-mobile.jpg">
-                                            <img src="img/img-11-04.jpg" alt="Image" class="img-fluid tm-header-img" loading="lazy">        
-                                        </picture>
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 tm-pad-0 d-flex">
+    
+                            <a href="img/img-11-03.jpg" class="w-50">
+                                <picture>
+                                    <source media="(max-width: 767px)" srcset="img/img-11-03-mobile.jpg">
+                                    <!-- A classe w-100 garante que ela ocupe metade exata da dupla -->
+                                    <img src="img/img-11-03.jpg" alt="Image" class="img-fluid tm-header-img w-100" loading="lazy">    
+                                </picture>
+                            </a>
+                            
+                            <a href="img/img-11-04.jpg" class="w-50">
+                                <picture>
+                                    <source media="(max-width: 767px)" srcset="img/img-11-04-mobile.jpg">
+                                    <img src="img/img-11-04.jpg" alt="Image" class="img-fluid tm-header-img w-100" loading="lazy">        
+                                </picture>
+                            </a>                        
+                            
                         </div>
 
                         <!-- Imagem 4 -->
