@@ -1,5 +1,3 @@
-/* dajogo-custom.css */
-
 @media (max-width: 767px) {
     /* Garante que a galeria seja um container flexível para organizar os blocos */
     .tm-header-gallery {
@@ -11,83 +9,91 @@
         height: auto;
         overflow: hidden;
     }
+/* Sobrescreve as classes col-xs-12 e col-sm-12 para que ocupem 1/3 da largura */
+/* Isso afeta os divs principais da galeria */
+.tm-header-gallery .col-xs-12,
+.tm-header-gallery .col-sm-12,
+.tm-header-gallery .col-md-4 { /* Incluímos col-md-4 caso ele também esteja ativo em alguma parte do range mobile */
+    width: calc(100% / 3 - 4px) !important;
+    max-width: calc(100% / 3 - 4px) !important;
+    flex-basis: calc(100% / 3 - 4px) !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
 
-    /* Estilo para cada "bloco" principal (div com classe col-) dentro da galeria */
-    /* Cada um dos 6 divs ocupará 1/3 da largura no mobile */
-    .tm-header-gallery > div[class*="col-"] {
-        /* Sobrescreve as larguras do Bootstrap para mobile */
-        width: calc(100% / 3 - 4px) !important; /* !important para garantir a sobrescrita */
-        max-width: calc(100% / 3 - 4px) !important; /* !important para garantir a sobrescrita */
-        flex-basis: calc(100% / 3 - 4px) !important; /* Controla a base do flex item */
-        flex-grow: 0 !important; /* Impede que o item cresça */
-        flex-shrink: 0 !important; /* Impede que o item encolha abaixo do seu width */
+    margin: 2px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    min-height: 75px;
+    position: relative;
+}
 
-        margin: 2px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        min-height: 75px;
-        position: relative;
-    }
+/* Estilo para TODAS as imagens dentro dos blocos da galeria */
+.tm-header-gallery img {
+    max-width: 100% !important;
+    height: auto !important; /* Permite que a altura se ajuste à proporção */
+    display: block;
+    object-fit: contain !important; /* Garante que a imagem inteira seja visível */
+    width: 100% !important;
+}
 
-    /* Estilo para TODAS as imagens dentro dos blocos da galeria */
-    .tm-header-gallery img {
-        max-width: 100% !important;
-        height: auto !important;
-        display: block;
-        object-fit: contain !important;
-        width: 100% !important;
-    }
+/* Ajustes para os blocos que contêm duas imagens (2:1) */
+/* Estes são os divs que contêm múltiplos &lt;a&gt; com imagens */
+/* Usamos o seletor mais específico para garantir que as regras se apliquem */
+.tm-header-gallery &gt; div.col-xs-12:has(a + a),
+.tm-header-gallery &gt; div.col-sm-12:has(a + a),
+.tm-header-gallery &gt; div.col-md-4:has(a + a) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 75px;
+}
 
-    /* Ajustes para os blocos que contêm duas imagens (2:1) - 2º e 4º div */
-    .tm-header-gallery > div:nth-child(2),
-    .tm-header-gallery > div:nth-child(4) {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-        min-height: 75px;
-    }
+/* Ajustes para as imagens dentro dos blocos duplos */
+/* Sobrescreve as classes col-xs-6 e col-sm-6 para que ocupem 48% da largura do bloco pai */
+.tm-header-gallery &gt; div.col-xs-12:has(a + a) .col-xs-6,
+.tm-header-gallery &gt; div.col-sm-12:has(a + a) .col-sm-6,
+.tm-header-gallery &gt; div.col-md-4:has(a + a) .col-md-6 {
+    width: 48% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    flex-basis: 48% !important; /* Garante que o flexbox respeite a largura */
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+}
 
-    /* Ajustes para as imagens dentro dos blocos 2 e 4 (as duplas 2:1) */
-    .tm-header-gallery > div:nth-child(2) img,
-    .tm-header-gallery > div:nth-child(4) img {
-        width: 48% !important;
-        height: auto !important;
-        object-fit: contain !important;
-    }
+/* Ajustes para o bloco da logo e slogan (o 5º div no seu HTML) */
+.tm-site-name {
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center;
+    margin: 0;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    box-sizing: border-box;
+    min-height: 75px;
+}
 
-    /* Ajustes para o bloco da logo e slogan (o 5º div no seu HTML) */
-    .tm-site-name {
-        position: relative;
-        width: 100% !important;
-        max-width: 100% !important;
-        text-align: center;
-        margin: 0;
-        height: 100% !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 5px;
-        box-sizing: border-box;
-        min-height: 75px;
-    }
+.tm-site-name .tm-logo-img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+}
 
-    .tm-site-name .tm-logo-img {
-        max-width: 100% !important;
-        height: auto !important;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .tm-site-name .tm-site-name-h2 {
-        font-size: 0.8rem;
-        margin-top: 5px;
-        color: #fff;
-        line-height: 1.2;
-    }
+.tm-site-name .tm-site-name-h2 {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #fff;
+    line-height: 1.2;
+}
 }
